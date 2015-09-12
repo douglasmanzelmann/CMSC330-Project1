@@ -1,0 +1,21 @@
+gui ::=
+    Window STRING '(' NUMBER ',' NUMBER ')' layout widgets End '.'
+layout ::=
+    Layout layout_type ':'
+layout_type ::=
+    Flow |
+    Grid '(' NUMBER ',' NUMBER [',' NUMBER ',' NUMBER] ')'
+widgets ::=
+    widget widgets |
+    widget
+widget ::=
+    Button STRING ';' |
+    Group radio_buttons End ';' |
+    Label STRING ';' |
+    Panel layout widgets End ';' |
+    Textfield NUMBER ';'
+radio_buttons ::=
+    radio_button radio_buttons |
+    radio_button
+radio_button ::=
+    Radio STRING ';'
