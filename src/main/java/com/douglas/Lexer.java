@@ -84,7 +84,7 @@ class Lexer
     public static void main(String[] args) throws SyntaxError, IOException {
         Lexer lexer;
         try {
-            lexer = new Lexer("C:\\Users\\580782\\Documents\\Personal\\CMSC330-Project1\\CMSC330-Project1\\src\\main\\resources\\example_input_file.txt");
+            lexer = new Lexer("C:\\Users\\douga_000\\Documents\\CMSC330\\src\\main\\resources\\example_input_file.txt");
             Token current = lexer.getNextToken();
             while (current != Token.EOF) {
                 System.out.println("Current: " + current);

@@ -1,16 +1,25 @@
-Window "Calculator" (200, 200) Layout Flow:
-  Textfield 20;
-  Panel Layout Grid(4, 3, 5, 5):
-    Button "7";
-    Button "8";
-    Button "9";
-    Button "4";
-    Button "5";
-    Button "6";
-    Button "1";
-    Button "2";
-    Button "3";
-    Label "";
-    Button "0";
-  End;
+Window "Creepypasta" (800, 300) Layout Flow:
+Label "Do you like scary stories?";
+Panel Layout Grid(3, 1, 2, 2):
+Group
+Radio "Yes";
+Radio "No";
+Radio "HECK NO!";
+End;
+End;
+Panel Layout Flow:
+Label "What is your favorite creepypasta? : ";
+Textfield 20;
+Button "Enter";
+End;
+Label "Please select your favorite from the list below: ";
+Panel Layout Grid(5, 1, 2, 2):
+Group
+Radio "SCP Foundation";
+Radio "Jeff The Killer";
+Radio "The Angel Statue";
+Radio "The Rake";
+Radio "The Slender Man";
+End;
+End;
 End.
