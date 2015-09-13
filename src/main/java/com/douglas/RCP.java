@@ -1,5 +1,7 @@
 package com.douglas;
 
+import javax.swing.*;
+import java.awt.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
@@ -8,31 +10,64 @@ import java.io.IOException;
  */
 public class RCP {
     protected Lexer lexer;
+    JFrame frame;
 
     public RCP() {
         try {
-            lexer = new Lexer("C:\\Users\\douga_000\\Documents\\CMSC330\\src\\main\\resources\\example_input_file.txt");
+            lexer = new Lexer("C:\\Users\\580782\\Documents\\Personal\\CMSC330-Project1\\CMSC330-Project1\\src\\main\\resources\\example_input_file.txt");
         } catch (FileNotFoundException e) { e.printStackTrace(); }
     }
 
     public void init() throws SyntaxError, IOException {
         window();
+        frame.setVisible(true);
     }
 
     private boolean window() throws SyntaxError, IOException {
-        if (lexer.getNextToken() == Token.WINDOW) {
-            System.out.println("wee");
+        if (lexer.getNextToken() == Token.WINDOW
+                && lexer.getNextToken() == Token.STRING) {
+            frame = new JFrame(lexer.getLexeme());
+            if (lexer.getNextToken() == Token.LEFT_PAREN
+                    && lexer.getNextToken() == Token.NUMBER) {
+                double width = lexer.getValue();
+                if (lexer.getNextToken() == Token.COMMA
+                        && lexer.getNextToken() == Token.NUMBER) {
+                    frame.setSize((int)width, (int)lexer.getValue());
+                    if (lexer.getNextToken() == Token.RIGHT_PAREN) {
+
+                    }
+                }
+            }
+        }
+
+        if (layout()) {
+
         }
 
         return false;
     }
 
-    private boolean layout() {
+    private boolean layout() throws SyntaxError, IOException {
+        if (lexer.getNextToken() == Token.STRING && lexer.getLexeme().equals(Token.LAYOUT)){
+            return (layoutTypeFlow() || layoutTypeGrid());
+        }
 
         return false;
     }
 
-    private boolean layoutType() {
+    private boolean layoutTypeFlow() throws SyntaxError, IOException {
+        if (lexer.getNextToken() == Token.LAYOUT && lexer.getNextToken() == Token.FLOW) {
+            frame.setLayout(new FlowLayout());
+            return true;
+        }
+
+        return false;
+    }
+
+    // need to have dimension
+    // already selected getNextToken... how do I get it back?
+    private boolean layoutTypeGrid() {
+
 
         return false;
     }
